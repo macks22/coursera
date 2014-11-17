@@ -70,10 +70,10 @@ void uf_union(UnionFind *uf, int n1, int n2) {
     // change root of shorter tree to root of taller
     if (uf->sizes[root1] > uf->sizes[root2]) {  // 1st tree taller than 2nd
         uf->nodes[root2] = uf->nodes[root1];
-        uf->sizes[root1]++;  // added root2 tree to root1 tree
+        uf->sizes[root1] += uf->sizes[root2];  // added root2 tree to root1 tree
     } else {  // 2nd tree taller, or same sizes
         uf->nodes[root1] = uf->nodes[root2];
-        uf->sizes[root2]++;  // added root1 tree to root2 tree
+        uf->sizes[root2] += uf->sizes[root1];  // added root1 tree to root2 tree
     }
 }
 
